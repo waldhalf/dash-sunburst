@@ -1,8 +1,8 @@
 import d3 from 'd3';
 
 const dflts = {
-    width: 600,
-    height: 500,
+    width: 1000,
+    height: 1000,
     padding: 10,
     innerRadius: 20,
     transitionDuration: 750
