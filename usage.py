@@ -333,6 +333,6 @@ if __name__ == '__main__':
     #Ligne pour déployer sur héroku
     port = int(os.getenv('PORT', 5000))
     print("Starting app on port %d" %port)
-    app.run(debug=False, port=port, host='0.0.0.0')
+    app.run_server(debug=False, port=port, host='0.0.0.0')
     # Ligne pour déployer en local
     # app.run_server(debug=True)
