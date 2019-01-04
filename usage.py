@@ -246,9 +246,11 @@ sunburst_data = {
 }
 
 app.layout = html.Div([
+    html.Div('Catalogue de services IMA : Plateforme Auto', style={'color': 'blue', 'fontSize': 24}),
+    html.Div('Dernière MAJ 04/01/19'),
     html.Div(
         [Sunburst(id='sun', data=sunburst_data)],
-        style={'width': '800px'}),
+        style={'width': '100%',  'margin-left': '150px'}),
     dcc.Graph(
         id='graph',
         style={'width': '1%', 'float': 'left', 'visibility':'hidden'}
@@ -258,7 +260,7 @@ app.layout = html.Div([
 
 @app.callback(Output('output', 'children'), [Input('sun', 'selectedPath')])
 def display_selected(selected_path):
-    return 'You have selected path: {}'.format('->'.join(selected_path or []) or 'root')
+    return 'Catalogue de services IMA: {}'.format('->'.join(selected_path or []) or 'root')
 
 @app.callback(Output('graph', 'figure'), [Input('sun', 'data'), Input('sun', 'selectedPath')])
 def display_graph(data, selected_path):
@@ -305,8 +307,8 @@ def display_graph(data, selected_path):
     crawl(data, [])
 
     layout = {
-        'width': 500,
-        'height': 500,
+        'width': 800,
+        'height': 800,
         'xaxis': {'title': 'Total Nodes', 'type': 'log'},
         'yaxis': {'title': 'Total Size', 'type': 'log'},
         'hovermode': 'closest'
@@ -333,6 +335,6 @@ if __name__ == '__main__':
     #Ligne pour déployer sur héroku
     port = int(os.getenv('PORT', 5000))
     print("Starting app on port %d" %port)
-    app.run_server(debug=False, port=port, host='0.0.0.0')
+    app.run_server(debug=True, port=port, host='0.0.0.0')
     # Ligne pour déployer en local
     # app.run_server(debug=True)
